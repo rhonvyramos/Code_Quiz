@@ -16,3 +16,15 @@ header {
     justify-content: space-around;
     align-items: center;
 }
+
+main {
+    height: 700px;
+    width: 99%;
+
+    border-style: groove;
+    margin: 5px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
