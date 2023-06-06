@@ -2,13 +2,15 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 header {
     height: 70px;
-    width: 100%;
+    width: 99%;
 
     border-style: groove;
+    margin: 5px;
 
     display: flex;
     justify-content: space-around;
