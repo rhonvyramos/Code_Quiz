@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header {
+    height: 70px;
+    width: 100%;
+
+    border-style: groove;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
