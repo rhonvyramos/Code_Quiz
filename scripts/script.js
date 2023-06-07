@@ -13,8 +13,7 @@ let q_datatypes = {
         "strings",
         "booleans",
         "numbers"
-    ],
-    "isAsked": false
+    ]
 };
 
 let q_ifelse = {
@@ -24,8 +23,7 @@ let q_ifelse = {
         "quotes",
         "curly braces",
         "square brackets"
-    ],
-    "isAsked": false
+    ]
 }
 
 let q_jsarrays = {
@@ -35,21 +33,20 @@ let q_jsarrays = {
         "numbers and strings",
         "other arrays",
         "booleans"
-    ],
-    "isAsked": false
+    ]
 }
 
-let list_questions = [q_datatypes, q_ifelse, q_jsarrays];
-let numQuestions = list_questions.length;
+let list_questions_available = [q_datatypes, q_ifelse, q_jsarrays];
+var list_questions_asked = [];
+let numQuestions = list_questions_available.length;
 var questionsLeft = numQuestions;
 
 button_quiz_start.addEventListener("click", function() {
     console.log("quiz started");
 
     let randIndex = Math.floor(Math.random() * numQuestions);
-    let randQuestionObject = list_questions[Math.floor(randIndex)];
+    let randQuestionObject = list_questions_available[Math.floor(randIndex)];
     let randQuestion = randQuestionObject["question"];
-    randQuestionObject["isAsked"] = true;
 
     document.getElementById("quiz_question").textContent = randQuestion;
     content_intro.style.display = "none";
@@ -58,10 +55,12 @@ button_quiz_start.addEventListener("click", function() {
 
 go_next.addEventListener("click", function() {
 
-    let randQuestion = Math.floor(Math.random() * numQuestions);
+    let randIndex = Math.floor(Math.random() * numQuestions);
+    let randQuestionObject = list_questions_available[Math.floor(randIndex)];
+    let randQuestion = randQuestionObject["question"];
 
     if (questionsLeft > 0) {
-        document.getElementById("quiz_question").textContent = list_questions[randQuestion]["question"];
+        document.getElementById("quiz_question").textContent = randQuestion;;
         questionsLeft -= 1;
         console.log(questionsLeft)
     } else {
