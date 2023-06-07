@@ -46,9 +46,12 @@ var questionsLeft = numQuestions;
 button_quiz_start.addEventListener("click", function() {
     console.log("quiz started");
 
-    let randQuestion = Math.floor(Math.random() * numQuestions);
+    let randIndex = Math.floor(Math.random() * numQuestions);
+    let randQuestionObject = list_questions[Math.floor(randIndex)];
+    let randQuestion = randQuestionObject["question"];
+    randQuestionObject["isAsked"] = true;
 
-    document.getElementById("quiz_question").textContent = list_questions[randQuestion]["question"];
+    document.getElementById("quiz_question").textContent = randQuestion;
     content_intro.style.display = "none";
     content_quiz.style.display = "flex";
 });
@@ -64,7 +67,5 @@ go_next.addEventListener("click", function() {
     } else {
         return;
     }
-
-
 })
 
