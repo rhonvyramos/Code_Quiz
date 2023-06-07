@@ -43,6 +43,23 @@ var questionsLeft = numQuestions;
 button_quiz_start.addEventListener("click", function() {
     console.log("quiz started");
 
+    display_quiz_questions();
+    
+    content_intro.style.display = "none";
+    content_quiz.style.display = "flex";
+});
+
+go_next.addEventListener("click", function() {
+
+    if(questionsLeft == 1) {
+        button_next_q.style.display = "none";
+        return;
+    }
+
+    display_quiz_questions();
+})
+
+function display_quiz_questions() {
     let randIndex = Math.floor(Math.random() * numQuestions);
     let randQuestionObject = list_questions_available[Math.floor(randIndex)];
     let randQuestion = randQuestionObject["question"];
@@ -53,30 +70,10 @@ button_quiz_start.addEventListener("click", function() {
     numQuestions = list_questions_available.length;
 
     document.getElementById("quiz_question").textContent = randQuestion;
-    content_intro.style.display = "none";
-    content_quiz.style.display = "flex";
-});
-
-go_next.addEventListener("click", function() {
-
-    console.log(questionsLeft);
-
-    if(questionsLeft == 1) {
-        button_next_q.style.display = "none";
-        return;
-    }
-
-    let randIndex = Math.floor(Math.random() * numQuestions);
-    let randQuestionObject = list_questions_available[Math.floor(randIndex)];
-    let randQuestion = randQuestionObject["question"];
-    list_questions_available.splice(randIndex, 1);
-    console.log(list_questions_available);
-
-    numQuestions = list_questions_available.length;
 
     if (questionsLeft > 0) {
         document.getElementById("quiz_question").textContent = randQuestion;
         questionsLeft -= 1;
     } 
-})
+}
 
