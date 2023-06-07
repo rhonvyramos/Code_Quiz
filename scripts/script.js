@@ -5,16 +5,6 @@ let content_scoreboard = document.getElementById("content_scoreboard");
 
 let button_quiz_start = document.getElementById("button_quiz_start");
 
-button_quiz_start.addEventListener("click", function() {
-    console.log("quiz started");
-
-    document.getElementById("quiz_question").textContent = q_datatypes["question"];
-    content_intro.style.display = "none";
-    content_quiz.style.display = "flex";
-});
-
-let list_questions = [];
-
 let q_datatypes = {
     "question":"Commonly used data types DO NOT include: ",
     "answers": [
@@ -24,3 +14,26 @@ let q_datatypes = {
         "numbers"
     ]
 };
+
+let q_ifelse = {
+    "question":"The condition in an if/else statement is enclosed within _____.",
+    "answers": [
+        "parenthesis",
+        "quotes",
+        "curly braces",
+        "square brackets"
+    ]
+}
+
+let list_questions = [q_datatypes, q_ifelse];
+
+button_quiz_start.addEventListener("click", function() {
+    console.log("quiz started");
+
+    let randQuestion = Math.floor(Math.random() * list_questions.length);
+
+    document.getElementById("quiz_question").textContent = list_questions[randQuestion]["question"];
+    content_intro.style.display = "none";
+    content_quiz.style.display = "flex";
+});
+
