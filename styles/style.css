@@ -34,4 +34,22 @@ main {
     width: 300px;
 
     border-style: groove;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#intro_title, #intro_description, #intro_quiz_start_button {
+    text-align: center;
+    margin: 10px 0px;
+}
+
+#intro_quiz_start_button {
+    display: flex;
+    justify-content: center;
+}
+
+#content_quiz, #content_highscore, #content_scoreboard {
+    display: none;
 }
