@@ -13,7 +13,8 @@ let q_datatypes = {
         "strings",
         "booleans",
         "numbers"
-    ]
+    ],
+    "isAsked": false
 };
 
 let q_ifelse = {
@@ -23,7 +24,8 @@ let q_ifelse = {
         "quotes",
         "curly braces",
         "square brackets"
-    ]
+    ],
+    "isAsked": false
 }
 
 let q_jsarrays = {
@@ -33,12 +35,13 @@ let q_jsarrays = {
         "numbers and strings",
         "other arrays",
         "booleans"
-    ]
+    ],
+    "isAsked": false
 }
 
 let list_questions = [q_datatypes, q_ifelse, q_jsarrays];
 let numQuestions = list_questions.length;
-var x = numQuestions;
+var questionsLeft = numQuestions;
 
 button_quiz_start.addEventListener("click", function() {
     console.log("quiz started");
@@ -54,10 +57,10 @@ go_next.addEventListener("click", function() {
 
     let randQuestion = Math.floor(Math.random() * numQuestions);
 
-    if (x > 0) {
+    if (questionsLeft > 0) {
         document.getElementById("quiz_question").textContent = list_questions[randQuestion]["question"];
-        x -= 1;
-        console.log(x)
+        questionsLeft -= 1;
+        console.log(questionsLeft)
     } else {
         return;
     }
