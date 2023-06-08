@@ -6,6 +6,8 @@ let content_scoreboard = document.getElementById("content_scoreboard");
 let button_quiz_start = document.getElementById("button_quiz_start");
 let button_next_q = document.getElementById("go_next");
 
+let quiz_answers = document.getElementById("quiz_answers");
+
 let q_datatypes = {
     "question":"(Q1) Commonly used data types DO NOT include: ",
     "answers": [
@@ -85,12 +87,16 @@ function display_quiz_questions() {
     let randQuestion = randQuestionObject["question"];
 
     list_questions_available.splice(randIndex, 1);
-    console.log(list_questions_available);
 
     numQuestions = list_questions_available.length;
 
     if (questionsLeft > 0) {
         document.getElementById("quiz_question").textContent = randQuestion;
+
+        $(quiz_answers).append("<ul></ul>");
+        $("ul").append("<li></li>");
+        $("li").append(randQuestionObject["answers"][0]);
+
         questionsLeft -= 1;
     } 
 }
