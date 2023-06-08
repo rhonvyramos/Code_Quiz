@@ -74,17 +74,15 @@ button_quiz_start.addEventListener("click", function() {
     content_quiz.style.display = "flex";
 });
 
-// placeholder button that will soon instead be used for answers
-// answers will be clickable and will use this function
-go_next.addEventListener("click", function() {
-
+// selecting correct answers displays the next question
+function display_next_question() {
     display_quiz_questions();
 
     if(questionsLeft == 0) {
         button_next_q.style.display = "none";
         return;
     }
-})
+}
 
 // displays quiz question, and its possible answers as a list
 function display_quiz_questions() {
@@ -100,7 +98,7 @@ function display_quiz_questions() {
     list_questions_available.splice(randIndex, 1);
     numQuestions = list_questions_available.length;
 
-    // should remove list elements every time question is displayed
+    // removes list elements every time question is displayed
     $(quiz_answers).empty();
 
     if (questionsLeft > 0) {
@@ -109,9 +107,13 @@ function display_quiz_questions() {
         // displays all possible answers
         $(quiz_answers).append("<ul></ul>");
         for(let x = 0; x < numAnswers; x++) {
-            $("ul").append("<li>" + randomizedAnswers[x] + "</li>");
+            $("ul").append("<li><button>" + randomizedAnswers[x] + "</button></li>")
+                .css("list-style-type", "none")
+                .css("margin", "5px")
+                .css("padding","5px");
         };
 
+        $("li").click(display_next_question);
         questionsLeft -= 1;
     } 
 }
