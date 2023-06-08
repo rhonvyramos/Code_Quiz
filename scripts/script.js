@@ -7,7 +7,7 @@ let button_quiz_start = document.getElementById("button_quiz_start");
 let button_next_q = document.getElementById("go_next");
 
 let q_datatypes = {
-    "question":"Commonly used data types DO NOT include: ",
+    "question":"(Q1) Commonly used data types DO NOT include: ",
     "answers": [
         "alerts",
         "strings",
@@ -17,7 +17,7 @@ let q_datatypes = {
 };
 
 let q_ifelse = {
-    "question":"The condition in an if/else statement is enclosed within _____.",
+    "question":"(Q2) The condition in an if/else statement is enclosed within _____.",
     "answers": [
         "parenthesis",
         "quotes",
@@ -27,7 +27,7 @@ let q_ifelse = {
 }
 
 let q_jsarrays = {
-    "question":"Arrays in JavaScript can be used to store _____.",
+    "question":"(Q3) Arrays in JavaScript can be used to store _____.",
     "answers": [
         "all of the above",
         "numbers and strings",
@@ -37,7 +37,7 @@ let q_jsarrays = {
 }
 
 let q_stringvals = {
-    "question":"String values must be enclosed within _____ when assigned to variables",
+    "question":"(Q4) String values must be enclosed within _____ when assigned to variables",
     "answers": [
         "quotes",
         "curly brackets",
@@ -47,7 +47,7 @@ let q_stringvals = {
 }
 
 let q_debuggingtool = {
-    "question":"A very useful tool used for development and debugging for printing content to the debugger is:",
+    "question":"(Q5) A very useful tool used for development and debugging for printing content to the debugger is:",
     "answers": [
         "console.log",
         "terminal/bash",
@@ -71,12 +71,12 @@ button_quiz_start.addEventListener("click", function() {
 
 go_next.addEventListener("click", function() {
 
-    if(questionsLeft == 1) {
+    display_quiz_questions();
+
+    if(questionsLeft == 0) {
         button_next_q.style.display = "none";
         return;
     }
-
-    display_quiz_questions();
 })
 
 function display_quiz_questions() {
@@ -88,8 +88,6 @@ function display_quiz_questions() {
     console.log(list_questions_available);
 
     numQuestions = list_questions_available.length;
-
-    document.getElementById("quiz_question").textContent = randQuestion;
 
     if (questionsLeft > 0) {
         document.getElementById("quiz_question").textContent = randQuestion;
