@@ -85,6 +85,7 @@ function display_quiz_questions() {
     let randIndex = Math.floor(Math.random() * numQuestions);
     let randQuestionObject = list_questions_available[Math.floor(randIndex)];
     let randQuestion = randQuestionObject["question"];
+    let numAnswers = randQuestionObject["answers"].length;
 
     list_questions_available.splice(randIndex, 1);
 
@@ -98,13 +99,24 @@ function display_quiz_questions() {
 
         // displays all possible answers
         $(quiz_answers).append("<ul></ul>");
+        for(let x = 0; x < numAnswers; x++) {
+            let randAnswer = Math.floor(Math.random() * numAnswers)
 
-        for(let x = 0; x < randQuestionObject["answers"].length; x++) {
-            $("ul").append("<li>" + randQuestionObject["answers"][x] + "</li>");
+            $("ul").append("<li>" + randQuestionObject["answers"][randAnswer] + "</li>");
         };
 
         questionsLeft -= 1;
     } 
+}
+
+// function to randomize order of answers from question object
+function randomizeAnswersOrder(answersArray) {
+    for (var x = answersArray.length - 1; x > 0; x--) {
+        var randNum = Math.floor(Math.random() * (x + 1));
+        var tempVar = answersArray[x];
+        answersArray[x] = answersArray[randNum];
+        answersArray[randNum] = tempVar;
+    }
 }
 
 
