@@ -36,7 +36,27 @@ let q_jsarrays = {
     ]
 }
 
-var list_questions_available = [q_datatypes, q_ifelse, q_jsarrays];
+let q_stringvals = {
+    "question":"String values must be enclosed within _____ when assigned to variables",
+    "answers": [
+        "quotes",
+        "curly brackets",
+        "commas",
+        "parenthesis"
+    ]
+}
+
+let q_debuggingtool = {
+    "question":"A very useful tool used for development and debugging for printing content to the debugger is:",
+    "answers": [
+        "console.log",
+        "terminal/bash",
+        "for loops",
+        "JavaScript"
+    ]
+}
+
+var list_questions_available = [q_datatypes, q_ifelse, q_jsarrays, q_stringvals, q_debuggingtool];
 var numQuestions = list_questions_available.length;
 var questionsLeft = numQuestions;
 
