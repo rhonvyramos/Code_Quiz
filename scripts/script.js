@@ -8,6 +8,7 @@ let button_next_q = document.getElementById("go_next");
 
 let quiz_answers = document.getElementById("quiz_answers");
 
+// all available questions as objects
 let q_datatypes = {
     "question":"(Q1) Commonly used data types DO NOT include: ",
     "answers": [
@@ -58,10 +59,12 @@ let q_debuggingtool = {
     ]
 }
 
+// variable to hold all available question objects in array
 var list_questions_available = [q_datatypes, q_ifelse, q_jsarrays, q_stringvals, q_debuggingtool];
 var numQuestions = list_questions_available.length;
 var questionsLeft = numQuestions;
 
+// introductory button displayed at start of quiz
 button_quiz_start.addEventListener("click", function() {
     console.log("quiz started");
 
@@ -71,6 +74,8 @@ button_quiz_start.addEventListener("click", function() {
     content_quiz.style.display = "flex";
 });
 
+// placeholder button that will soon instead be used for answers
+// answers will be clickable and will use this function
 go_next.addEventListener("click", function() {
 
     display_quiz_questions();
@@ -81,6 +86,7 @@ go_next.addEventListener("click", function() {
     }
 })
 
+// displays quiz question, and its possible answers as a list
 function display_quiz_questions() {
     let randIndex = Math.floor(Math.random() * numQuestions);
     let randQuestionObject = list_questions_available[Math.floor(randIndex)];
@@ -112,14 +118,12 @@ function display_quiz_questions() {
 
 // function to randomize order of answers from question object
 function randomizeAnswersOrder(answersArray) {
-
     for (var x = answersArray.length - 1; x > 0; x--) {
         var randNum = Math.floor(Math.random() * (x + 1));
         var tempVar = answersArray[x];
         answersArray[x] = answersArray[randNum];
         answersArray[randNum] = tempVar;
     }
-
     return answersArray;
 }
 
