@@ -12,7 +12,7 @@ let quiz_answers = document.getElementById("quiz_answers");
 let q_datatypes = {
     "question":"(Q1) Commonly used data types DO NOT include: ",
     "answers": [
-        "alerts":1,
+        "alerts",
         "strings",
         "booleans",
         "numbers"
