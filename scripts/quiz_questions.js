@@ -50,7 +50,13 @@ let q_debuggingtool = {
 }
 
 // variable to hold all available question objects in array
-var list_questions_available = [q_datatypes, q_ifelse, q_jsarrays, q_stringvals, q_debuggingtool];
+var list_questions_available = [
+    q_datatypes, 
+    q_ifelse, 
+    q_jsarrays, 
+    q_stringvals, 
+    q_debuggingtool
+];
 
 export function quiz_contents() {
     return list_questions_available;
