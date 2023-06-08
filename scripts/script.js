@@ -98,12 +98,13 @@ function display_quiz_questions() {
 
         // displays all possible answers
         $(quiz_answers).append("<ul></ul>");
+
         for(let x = 0; x < randQuestionObject["answers"].length; x++) {
-            $("ul").append("<li></li>");
-            $("li").append(randQuestionObject["answers"][x]);
-        }
+            $("ul").append("<li>" + randQuestionObject["answers"][x] + "</li>");
+        };
 
         questionsLeft -= 1;
     } 
 }
+
 
