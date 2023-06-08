@@ -90,12 +90,18 @@ function display_quiz_questions() {
 
     numQuestions = list_questions_available.length;
 
+    // should remove list elements every time question is displayed
+    $(quiz_answers).empty();
+
     if (questionsLeft > 0) {
         document.getElementById("quiz_question").textContent = randQuestion;
 
+        // displays all possible answers
         $(quiz_answers).append("<ul></ul>");
-        $("ul").append("<li></li>");
-        $("li").append(randQuestionObject["answers"][0]);
+        for(let x = 0; x < randQuestionObject["answers"].length; x++) {
+            $("ul").append("<li></li>");
+            $("li").append(randQuestionObject["answers"][x]);
+        }
 
         questionsLeft -= 1;
     } 
