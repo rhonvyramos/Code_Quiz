@@ -85,10 +85,13 @@ function display_quiz_questions() {
     let randIndex = Math.floor(Math.random() * numQuestions);
     let randQuestionObject = list_questions_available[Math.floor(randIndex)];
     let randQuestion = randQuestionObject["question"];
-    let numAnswers = randQuestionObject["answers"].length;
 
+    // calls function to randomize order of answers
+    let randomizedAnswers = randomizeAnswersOrder(randQuestionObject["answers"]);
+    let numAnswers = randomizedAnswers.length;
+
+    // removes question from available question list once it is displayed
     list_questions_available.splice(randIndex, 1);
-
     numQuestions = list_questions_available.length;
 
     // should remove list elements every time question is displayed
@@ -100,9 +103,7 @@ function display_quiz_questions() {
         // displays all possible answers
         $(quiz_answers).append("<ul></ul>");
         for(let x = 0; x < numAnswers; x++) {
-            let randAnswer = Math.floor(Math.random() * numAnswers)
-
-            $("ul").append("<li>" + randQuestionObject["answers"][randAnswer] + "</li>");
+            $("ul").append("<li>" + randomizedAnswers[x] + "</li>");
         };
 
         questionsLeft -= 1;
@@ -111,12 +112,15 @@ function display_quiz_questions() {
 
 // function to randomize order of answers from question object
 function randomizeAnswersOrder(answersArray) {
+
     for (var x = answersArray.length - 1; x > 0; x--) {
         var randNum = Math.floor(Math.random() * (x + 1));
         var tempVar = answersArray[x];
         answersArray[x] = answersArray[randNum];
         answersArray[randNum] = tempVar;
     }
+
+    return answersArray;
 }
 
 
