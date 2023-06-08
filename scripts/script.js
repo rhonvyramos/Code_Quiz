@@ -12,7 +12,7 @@ let quiz_answers = document.getElementById("quiz_answers");
 let q_datatypes = {
     "question":"(Q1) Commonly used data types DO NOT include: ",
     "answers": [
-        "alerts",
+        "alerts":1,
         "strings",
         "booleans",
         "numbers"
@@ -77,11 +77,6 @@ button_quiz_start.addEventListener("click", function() {
 // selecting correct answers displays the next question
 function display_next_question() {
     display_quiz_questions();
-
-    if(questionsLeft == 0) {
-        button_next_q.style.display = "none";
-        return;
-    }
 }
 
 // displays quiz question, and its possible answers as a list
