@@ -27,11 +27,9 @@ button_quiz_start.addEventListener("click", function() {
 
 // selecting correct answers displays the next question
 function display_next_question() {
-
     if(questionsLeft == 0) {
         return
-    }
-
+    } 
     display_quiz_questions();
 }
 
@@ -64,7 +62,16 @@ function display_quiz_questions() {
                 .css("padding","5px");
         };
 
-        $("li").click(display_next_question);
+        //$("li").on("click", display_next_question());
+
+        $("li").click(function() {
+            if($(this).attr("id") == 1) {
+                console.log("correct")
+                display_next_question();
+            } else {
+                console.log("incorrect")
+            }
+        })
         questionsLeft -= 1;
     } 
 }
