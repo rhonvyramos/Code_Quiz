@@ -86,12 +86,17 @@ function display_quiz_questions() {
     } 
 }
 
+// displays the timer
 function display_timer() {
     content_timer.textContent += quiz_time;
 
+    // timer counts down every one second
     var display_time = setInterval(function() {
         quiz_time -= 1;
         content_timer.textContent = "Timer: " + quiz_time;
+
+        // when timer is below zero, display the high score submission
+        // timer displays 0 for extra leniency before timing out
         if(quiz_time < 0) {
             content_timer.textContent = "Timer: Over";
             clearInterval(display_time);
@@ -101,14 +106,13 @@ function display_timer() {
 
 }
 
+// displays the submission page for high scores
 function display_highscore_submission() {
     content_quiz.style.display = "none";
     content_highscore.style.display = "flex";
 
-    content_highscore.querySelector("#highscore_prompt_title").innerHTML = "All Done!";
     content_highscore.querySelector("#highscore_finalscore").innerHTML = "Your final score is: " + quiz_score + "!";
-    
-    $(content_highscore).find("#highscore_prompt_userinput").append("<input type=\"text\" placeholder=\"What is your name?\"></input>");
+ 
 }
 
 function display_scoreboard() {
