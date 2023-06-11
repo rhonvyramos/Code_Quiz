@@ -17,6 +17,7 @@ var questionsLeft = numQuestions;
 
 // quiz time in seconds
 var quiz_time = 60;
+var display_time;
 
 // user's quiz score
 var quiz_score = 0;
@@ -37,6 +38,8 @@ button_quiz_start.addEventListener("click", function() {
 // selecting correct answers displays the next question
 function display_next_question() {
     if(questionsLeft == 0) {
+        clearInterval(display_time);
+        content_timer.textContent = "Timer: Over";
         display_highscore_submission();
         return
     } 
@@ -77,13 +80,14 @@ function display_quiz_questions() {
         $("li").click(function() {
             if($(this).attr("id") == 1) {
                 quiz_score += 1;
-                document.getElementById("quiz_response").innerHTML = "Correct!";
+                document.getElementById("quiz_response").innerHTML = "Previous answer correct!";
                 display_next_question();
                 return;
             } else {
-                document.getElementById("quiz_response").innerHTML = "Incorrect.";
+                document.getElementById("quiz_response").innerHTML = "Previous answer incorrect.";
                 quiz_time -= 10;
                 content_timer.textContent = "Timer: " + quiz_time;
+                display_next_question();
              }
         });
         questionsLeft -= 1;
@@ -95,7 +99,7 @@ function display_timer() {
     content_timer.textContent += quiz_time;
 
     // timer counts down every one second
-    var display_time = setInterval(function() {
+    display_time = setInterval(function() {
         quiz_time -= 1;
         content_timer.textContent = "Timer: " + quiz_time;
 
@@ -138,7 +142,10 @@ function display_scoreboard() {
     content_scoreboard.style.display = "flex";
 
     let list_highscores = quiz_highscores;
-    console.log(list_highscores);
+
+    for(let x = 0; x < list_highscores.length; x++) {
+        $("#list_highscores").append("<li id=\"item_highscore\">" + list_highscores[x]["user_name"] + ", " + list_highscores[x]["quiz_score"] + "</li>");
+    }
 }
 
 // function to randomize order of answers from question object
