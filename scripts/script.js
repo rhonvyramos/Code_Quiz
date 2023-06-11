@@ -77,12 +77,20 @@ function display_quiz_questions() {
 }
 
 function display_timer() {
-    var initialTime = 60;
+    var initialTime = 3;
     content_timer.textContent += initialTime;
+
     window.setInterval(function() {
+        if(initialTime <= 0) {
+            clearInterval(initialTime);
+            content_timer.textContent = "Timer: Over";
+            return;
+        }
         initialTime -= 1;
         content_timer.textContent = "Timer: " + initialTime;
     }, 1000);
+
+
 }
 
 function display_highscore_submission() {
