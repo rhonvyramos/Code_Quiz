@@ -79,7 +79,8 @@ function display_quiz_questions() {
             } else {
                 document.getElementById("quiz_response").innerHTML = "Incorrect.";
                 quiz_time -= 10;
-            }
+                content_timer.textContent = "Timer: " + quiz_time;
+             }
         });
         questionsLeft -= 1;
     } 
