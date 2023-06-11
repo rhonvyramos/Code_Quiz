@@ -38,6 +38,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
 }
 
 #intro_title, #intro_description, #intro_quiz_start_button {
