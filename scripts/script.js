@@ -112,7 +112,6 @@ function display_highscore_submission() {
     content_highscore.style.display = "flex";
 
     content_highscore.querySelector("#highscore_finalscore").innerHTML = "Your final score is: " + quiz_score + "!";
- 
 }
 
 function display_scoreboard() {
