@@ -21,6 +21,9 @@ var quiz_time = 60;
 // user's quiz score
 var quiz_score = 0;
 
+// quiz highscores 
+var quiz_highscores = [];
+
 // introductory button displayed at start of quiz
 button_quiz_start.addEventListener("click", function() {
 
@@ -114,9 +117,22 @@ function display_highscore_submission() {
 
     content_highscore.querySelector("#highscore_finalscore").innerHTML = "Your final score is: " + quiz_score + "!";
 
-    button_display_scoreboard.addEventListener("click", display_scoreboard);
+    // adds username and score into highscores array
+    button_display_scoreboard.addEventListener("click", function() {
+        let user_name = document.getElementById("user_input").value;
+
+        // button does nothing if the user inputs nothing into text field
+        if(user_name == "") {
+            return;
+        }
+        quiz_highscores.push({user_name, quiz_score});
+        localStorage.setItem("scores", JSON.stringify(quiz_highscores));
+        console.log(quiz_highscores);
+        display_scoreboard();
+    });
 }
 
+// displays the scoreboard
 function display_scoreboard() {
     content_highscore.style.display = "none";
     content_scoreboard.style.display = "flex";
