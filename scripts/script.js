@@ -22,7 +22,7 @@ var quiz_time = 60;
 var quiz_score = 0;
 
 // quiz highscores 
-var quiz_highscores = [];
+var quiz_highscores = JSON.parse(localStorage.getItem("scores"));
 
 // introductory button displayed at start of quiz
 button_quiz_start.addEventListener("click", function() {
@@ -127,7 +127,7 @@ function display_highscore_submission() {
         }
         quiz_highscores.push({user_name, quiz_score});
         localStorage.setItem("scores", JSON.stringify(quiz_highscores));
-        console.log(quiz_highscores);
+        console.log(localStorage.getItem("scores"));
         display_scoreboard();
     });
 }
