@@ -58,7 +58,7 @@ function display_quiz_questions() {
         // displays all possible answers
         $(quiz_answers).append("<ul></ul>");
         for(let x = 0; x < numAnswers; x++) {
-            $("ul").append("<li><button>" + randomizedAnswers[x] + "</button></li>")
+            $("ul").append("<li><button>" + Object.keys(randomizedAnswers[x]) + "</button></li>")
                 .css("list-style-type", "none")
                 .css("margin", "5px")
                 .css("padding","5px");
