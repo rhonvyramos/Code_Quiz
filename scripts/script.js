@@ -9,6 +9,7 @@ let button_quiz_start = document.getElementById("button_quiz_start");
 let quiz_answers = document.getElementById("quiz_answers");
 let button_display_scoreboard = document.getElementById("button_submit_highscore");
 let button_clear_highscores = document.getElementById("button_clear_highscores");
+let button_go_back = document.getElementById("button_go_back");
 
 // variable to hold all available question objects in array
 var list_questions_available = quiz_contents();
@@ -165,6 +166,11 @@ function display_scoreboard() {
         $("#list_highscores").remove("#item_highscore");
         document.getElementById("button_clear_highscores").innerHTML = "Highscores Cleared. Refresh the page.";
     });
+
+    // displays intro page again by refreshing the page
+    button_go_back.addEventListener("click", function() {
+        location.reload();
+    })
 }
 
 // function to randomize order of answers from question object
