@@ -10,6 +10,7 @@ let quiz_answers = document.getElementById("quiz_answers");
 let button_display_scoreboard = document.getElementById("button_submit_highscore");
 let button_clear_highscores = document.getElementById("button_clear_highscores");
 let button_go_back = document.getElementById("button_go_back");
+let view_highscores_text = document.getElementById("view_highscores_text");
 
 // variable to hold all available question objects in array
 var list_questions_available = quiz_contents();
@@ -30,6 +31,7 @@ var quiz_highscores = JSON.parse(localStorage.getItem("scores"));
 // introductory button displayed at start of quiz
 button_quiz_start.addEventListener("click", function() {
 
+    // displays highscore scoreboard and ends timer immediately if in quiz
     display_quiz_questions();
     display_timer();
     
@@ -37,6 +39,14 @@ button_quiz_start.addEventListener("click", function() {
     content_quiz.style.display = "flex";
 });
 
+// clicking view highscores sends user straight to scoreboard display
+view_highscores_text.addEventListener("click", function() {
+    content_intro.style.display = "none";
+    view_highscores_text.style.display = "none";
+
+    clearInterval(display_time);
+    display_scoreboard();
+});
 
 // selecting correct answers displays the next question
 function display_next_question() {
@@ -148,6 +158,7 @@ function display_scoreboard() {
     content_quiz.style.display = "none";
     content_highscore.style.display = "none";
     content_scoreboard.style.display = "flex";
+    view_highscores_text.style.display = "none";
 
     let list_highscores = quiz_highscores;
 
@@ -164,7 +175,7 @@ function display_scoreboard() {
     button_clear_highscores.addEventListener("click", function() {
         localStorage.removeItem("scores");
         $("#list_highscores").remove("#item_highscore");
-        document.getElementById("button_clear_highscores").innerHTML = "Highscores Cleared. Refresh the page.";
+        document.getElementById("button_clear_highscores").innerHTML = "Highscores Cleared. Refresh the page or click \"Go Back\" to restart the quiz.";
     });
 
     // displays intro page again by refreshing the page
