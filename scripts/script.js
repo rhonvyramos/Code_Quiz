@@ -21,7 +21,7 @@ var quiz_time = 60;
 // user's quiz score
 var quiz_score = 0;
 
-// quiz highscores 
+// quiz highscores stored in localStorage
 var quiz_highscores = JSON.parse(localStorage.getItem("scores"));
 
 // introductory button displayed at start of quiz
@@ -64,9 +64,9 @@ function display_quiz_questions() {
         document.getElementById("quiz_question").textContent = randQuestion;
 
         // displays all possible answers
-        $(quiz_answers).append("<ul></ul>");
+        $(quiz_answers).append("<ul id=\"list_answers\"></ul>");
         for(let x = 0; x < numAnswers; x++) {
-            $("ul").append("<li id=" + Object.values(randomizedAnswers[x]) + "><button>" + Object.keys(randomizedAnswers[x]) + "</button></li>")
+            $("#list_answers").append("<li id=" + Object.values(randomizedAnswers[x]) + "><button>" + Object.keys(randomizedAnswers[x]) + "</button></li>")
                 .css("list-style-type", "none")
                 .css("margin", "5px")
                 .css("padding","5px");
@@ -127,15 +127,18 @@ function display_highscore_submission() {
         }
         quiz_highscores.push({user_name, quiz_score});
         localStorage.setItem("scores", JSON.stringify(quiz_highscores));
-        console.log(localStorage.getItem("scores"));
         display_scoreboard();
     });
 }
 
 // displays the scoreboard
 function display_scoreboard() {
+    content_quiz.style.display = "none";
     content_highscore.style.display = "none";
     content_scoreboard.style.display = "flex";
+
+    let list_highscores = quiz_highscores;
+    console.log(list_highscores);
 }
 
 // function to randomize order of answers from question object
