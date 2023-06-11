@@ -62,18 +62,24 @@ function display_quiz_questions() {
                 .css("padding","5px");
         };
 
-        //$("li").on("click", display_next_question());
-
+        // displays the next question if the selected answer is correct
+        // otherwise display "incorrect answer" response
         $("li").click(function() {
             if($(this).attr("id") == 1) {
-                console.log("correct")
                 display_next_question();
-            } else {
-                console.log("incorrect")
-            }
-        })
+                return;
+            } 
+        });
         questionsLeft -= 1;
     } 
+}
+
+function display_highscore_submission() {
+    // TODO
+}
+
+function display_scoreboard() {
+    // TODO
 }
 
 // function to randomize order of answers from question object
