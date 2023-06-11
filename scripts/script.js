@@ -1,3 +1,4 @@
+// quiz questions imported from a separate js file to reduce clutter
 import { quiz_contents } from "./quiz_questions.js";
 
 let content_intro = document.getElementById("content_intro");
@@ -175,7 +176,7 @@ function display_scoreboard() {
     button_clear_highscores.addEventListener("click", function() {
         localStorage.removeItem("scores");
         $("#list_highscores").remove("#item_highscore");
-        document.getElementById("button_clear_highscores").innerHTML = "Highscores Cleared. Refresh the page or click \"Go Back\" to restart the quiz.";
+        document.getElementById("button_clear_highscores").innerHTML = "Highscores cleared. Refresh the page or click \"Go Back\" to restart the quiz.";
     });
 
     // displays intro page again by refreshing the page

@@ -49,15 +49,71 @@ let q_debuggingtool = {
     ]
 };
 
+let q_ultag = {
+    "question":"(Q6) The <ul> tag designates what type of HTML element?",
+    "answers":[
+        {"unordered list":1},
+        {"unripe lemons":0},
+        {"undiagnosed ligma":0},
+        {"un list":0}
+    ]
+};
+
+let q_varscope = {
+    "question":"(Q7) A \"global variable\" is a variable that can be used...",
+    "answers":[
+        {"... across all function scopes.":1},
+        {"... across the globe.":0},
+        {"... in one function only.":0},
+        {"... only where it is.":0}
+    ]
+};
+
+let q_jqueryselector = {
+    "question":"(Q8) What is the correct syntax for a jQuery selector that selects an element with a specific id?",
+    "answers":[
+        {"$(\"#name\")":1},
+        {"$(name)":0},
+        {"#(name)":0},
+        {"$(\"name\")#":0}
+    ]
+};
+
+let q_cssstyling = {
+    "question":"(Q9) What is the correct syntax for a .css style that targets p element under a h1 tag?",
+    "answers":[
+        {"h1 p {}":1},
+        {"h1 #p {}":0},
+        {"#p {}":0},
+        {"h1 {p}":0}
+    ]
+};
+
+let q_objects = {
+    "question":"(Q10) How many attributes can an object have?",
+    "answers":[
+        {"As many as needed.":1},
+        {"Four dabloons.":0},
+        {"Eight.":0},
+        {"One.":0}
+    ]
+};
+
 // variable to hold all available question objects in array
 var list_questions_available = [
     q_datatypes, 
     q_ifelse, 
     q_jsarrays, 
     q_stringvals, 
-    q_debuggingtool
+    q_debuggingtool,
+    q_ultag,
+    q_varscope,
+    q_jqueryselector,
+    q_cssstyling,
+    q_objects
 ];
 
+// exports questions array 
 export function quiz_contents() {
     return list_questions_available;
 }
