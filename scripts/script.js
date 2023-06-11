@@ -123,6 +123,7 @@ function display_scoreboard() {
 }
 
 // function to randomize order of answers from question object
+// code implemented from: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function randomizeAnswersOrder(answersArray) {
     for (var x = answersArray.length - 1; x > 0; x--) {
         var randNum = Math.floor(Math.random() * (x + 1));
