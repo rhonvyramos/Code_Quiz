@@ -17,6 +17,8 @@ var list_questions_available = quiz_contents();
 var numQuestions = list_questions_available.length;
 var questionsLeft = numQuestions;
 
+var quiz_score = 0;
+
 // introductory button displayed at start of quiz
 button_quiz_start.addEventListener("click", function() {
 
@@ -97,7 +99,10 @@ function display_highscore_submission() {
     content_quiz.style.display = "none";
     content_highscore.style.display = "flex";
 
-    content_highscore.querySelector("#highscore_prompt_title").innerHTML = "Highscores";
+    content_highscore.querySelector("#highscore_prompt_title").innerHTML = "All Done!";
+    content_highscore.querySelector("#highscore_finalscore").innerHTML = "Your final score is: " + quiz_score + "!";
+    
+    $(content_highscore).find("#highscore_prompt_userinput").append("<input type=\"text\" placeholder=\"What is your name?\"></input>");
 }
 
 function display_scoreboard() {
