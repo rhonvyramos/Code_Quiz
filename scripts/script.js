@@ -5,11 +5,9 @@ let content_quiz = document.getElementById("content_quiz");
 let content_highscore = document.getElementById("content_highscore");
 let content_scoreboard = document.getElementById("content_scoreboard");
 let content_timer = document.getElementById("timer").querySelector("p");
-
 let button_quiz_start = document.getElementById("button_quiz_start");
-let button_next_q = document.getElementById("go_next");
-
 let quiz_answers = document.getElementById("quiz_answers");
+let button_display_scoreboard = document.getElementById("button_submit_highscore");
 
 // variable to hold all available question objects in array
 var list_questions_available = quiz_contents();
@@ -17,7 +15,10 @@ var list_questions_available = quiz_contents();
 var numQuestions = list_questions_available.length;
 var questionsLeft = numQuestions;
 
+// quiz time in seconds
 var quiz_time = 60;
+
+// user's quiz score
 var quiz_score = 0;
 
 // introductory button displayed at start of quiz
@@ -112,10 +113,13 @@ function display_highscore_submission() {
     content_highscore.style.display = "flex";
 
     content_highscore.querySelector("#highscore_finalscore").innerHTML = "Your final score is: " + quiz_score + "!";
+
+    button_display_scoreboard.addEventListener("click", display_scoreboard);
 }
 
 function display_scoreboard() {
-    // TODO
+    content_highscore.style.display = "none";
+    content_scoreboard.style.display = "flex";
 }
 
 // function to randomize order of answers from question object
