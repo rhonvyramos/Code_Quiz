@@ -30,6 +30,7 @@ button_quiz_start.addEventListener("click", function() {
 // selecting correct answers displays the next question
 function display_next_question() {
     if(questionsLeft == 0) {
+        display_highscore_submission();
         return
     } 
     display_quiz_questions();
@@ -80,21 +81,23 @@ function display_timer() {
     var initialTime = 3;
     content_timer.textContent += initialTime;
 
-    window.setInterval(function() {
-        if(initialTime <= 0) {
-            clearInterval(initialTime);
-            content_timer.textContent = "Timer: Over";
-            return;
-        }
+    var display_time = setInterval(function() {
         initialTime -= 1;
         content_timer.textContent = "Timer: " + initialTime;
+        if(initialTime < 0) {
+            content_timer.textContent = "Timer: Over";
+            clearInterval(display_time);
+            display_highscore_submission();
+        }
     }, 1000);
-
 
 }
 
 function display_highscore_submission() {
-    // TODO
+    content_quiz.style.display = "none";
+    content_highscore.style.display = "flex";
+
+    content_highscore.querySelector("#highscore_prompt_title").innerHTML = "Highscores";
 }
 
 function display_scoreboard() {
