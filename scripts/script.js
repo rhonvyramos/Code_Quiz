@@ -4,6 +4,7 @@ let content_intro = document.getElementById("content_intro");
 let content_quiz = document.getElementById("content_quiz");
 let content_highscore = document.getElementById("content_highscore");
 let content_scoreboard = document.getElementById("content_scoreboard");
+let content_timer = document.getElementById("timer").querySelector("p");
 
 let button_quiz_start = document.getElementById("button_quiz_start");
 let button_next_q = document.getElementById("go_next");
@@ -20,6 +21,7 @@ var questionsLeft = numQuestions;
 button_quiz_start.addEventListener("click", function() {
 
     display_quiz_questions();
+    display_timer();
     
     content_intro.style.display = "none";
     content_quiz.style.display = "flex";
@@ -72,6 +74,15 @@ function display_quiz_questions() {
         });
         questionsLeft -= 1;
     } 
+}
+
+function display_timer() {
+    var initialTime = 60;
+    content_timer.textContent += initialTime;
+    window.setInterval(function() {
+        initialTime -= 1;
+        content_timer.textContent = "Timer: " + initialTime;
+    }, 1000);
 }
 
 function display_highscore_submission() {
