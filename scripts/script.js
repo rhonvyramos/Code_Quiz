@@ -17,6 +17,7 @@ var list_questions_available = quiz_contents();
 var numQuestions = list_questions_available.length;
 var questionsLeft = numQuestions;
 
+var quiz_time = 60;
 var quiz_score = 0;
 
 // introductory button displayed at start of quiz
@@ -71,22 +72,26 @@ function display_quiz_questions() {
         // otherwise display "incorrect answer" response
         $("li").click(function() {
             if($(this).attr("id") == 1) {
+                quiz_score += 1;
+                document.getElementById("quiz_response").innerHTML = "Correct!";
                 display_next_question();
                 return;
-            } 
+            } else {
+                document.getElementById("quiz_response").innerHTML = "Incorrect.";
+                quiz_time -= 10;
+            }
         });
         questionsLeft -= 1;
     } 
 }
 
 function display_timer() {
-    var initialTime = 3;
-    content_timer.textContent += initialTime;
+    content_timer.textContent += quiz_time;
 
     var display_time = setInterval(function() {
-        initialTime -= 1;
-        content_timer.textContent = "Timer: " + initialTime;
-        if(initialTime < 0) {
+        quiz_time -= 1;
+        content_timer.textContent = "Timer: " + quiz_time;
+        if(quiz_time < 0) {
             content_timer.textContent = "Timer: Over";
             clearInterval(display_time);
             display_highscore_submission();
