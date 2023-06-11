@@ -8,6 +8,7 @@ let content_timer = document.getElementById("timer").querySelector("p");
 let button_quiz_start = document.getElementById("button_quiz_start");
 let quiz_answers = document.getElementById("quiz_answers");
 let button_display_scoreboard = document.getElementById("button_submit_highscore");
+let button_clear_highscores = document.getElementById("button_clear_highscores");
 
 // variable to hold all available question objects in array
 var list_questions_available = quiz_contents();
@@ -35,13 +36,16 @@ button_quiz_start.addEventListener("click", function() {
     content_quiz.style.display = "flex";
 });
 
+
 // selecting correct answers displays the next question
 function display_next_question() {
+
+    // when available questione expire, end timer then display highscore submission screen
     if(questionsLeft == 0) {
         clearInterval(display_time);
         content_timer.textContent = "Timer: Over";
         display_highscore_submission();
-        return
+        return;
     } 
     display_quiz_questions();
 }
@@ -125,10 +129,13 @@ function display_highscore_submission() {
     button_display_scoreboard.addEventListener("click", function() {
         let user_name = document.getElementById("user_input").value;
 
-        // button does nothing if the user inputs nothing into text field
-        if(user_name == "") {
-            return;
+        // when localStorage is empty, quiz_highscores is null
+        // ensures the variable is an array before saving to localStorage
+        if(quiz_highscores == null) {
+            quiz_highscores = [];
         }
+
+        // saves username and score into localStorage
         quiz_highscores.push({user_name, quiz_score});
         localStorage.setItem("scores", JSON.stringify(quiz_highscores));
         display_scoreboard();
@@ -143,9 +150,21 @@ function display_scoreboard() {
 
     let list_highscores = quiz_highscores;
 
-    for(let x = 0; x < list_highscores.length; x++) {
-        $("#list_highscores").append("<li id=\"item_highscore\">" + list_highscores[x]["user_name"] + ", " + list_highscores[x]["quiz_score"] + "</li>");
-    }
+    if(quiz_highscores != null) {
+        for(let x = 0; x < list_highscores.length; x++) {
+            $("#list_highscores").append("<li id=\"item_highscore\">" + list_highscores[x]["user_name"] + ", " + list_highscores[x]["quiz_score"] + "</li>")
+                .css("list-style-type", "none")
+                .css("margin", "5px")
+                .css("padding","5px");
+        };
+    };
+
+    // clears highscore list
+    button_clear_highscores.addEventListener("click", function() {
+        localStorage.removeItem("scores");
+        $("#list_highscores").remove("#item_highscore");
+        document.getElementById("button_clear_highscores").innerHTML = "Highscores Cleared. Refresh the page.";
+    });
 }
 
 // function to randomize order of answers from question object
