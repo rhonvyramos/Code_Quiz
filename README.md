@@ -6,7 +6,7 @@ A simple Code Quiz website the presents the user various coding-related question
 Simply download the repository on your machine and run the index.html file on a live server.
 
 ## Use
-Here is the GitHub Pages link:
+Below is the link to the site as it initially appears to visitors:
 
 https://rhonvyramos.github.io/Code_Quiz/
 
