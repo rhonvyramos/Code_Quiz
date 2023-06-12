@@ -8,7 +8,7 @@ Simply download the repository on your machine and run the index.html file on a 
 ## Use
 Here is the GitHub Pages link:
 
-https://github.com/rhonvyramos/Code_Quiz/deployments/activity_log?environment=github-pages
+https://rhonvyramos.github.io/Code_Quiz/
 
 ## Screencap
 Below is how the site initially appears to visitors:
