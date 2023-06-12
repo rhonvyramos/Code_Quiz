@@ -69,6 +69,7 @@ main {
 }
 
 #view_highscores_text p:hover {
+    padding:5px;
     border-style: groove;
     cursor: pointer;
 }

@@ -96,11 +96,11 @@ function display_quiz_questions() {
         $("li").click(function() {
             if($(this).attr("id") == 1) {
                 quiz_score += 1;
-                document.getElementById("quiz_response").innerHTML = "Previous answer correct!";
+                document.getElementById("quiz_response").innerHTML = "Previous answer correct! ✅";
                 display_next_question();
                 return;
             } else {
-                document.getElementById("quiz_response").innerHTML = "Previous answer incorrect.";
+                document.getElementById("quiz_response").innerHTML = "Previous answer incorrect. ⛔";
                 quiz_time -= 10;
                 content_timer.textContent = "Timer: " + quiz_time;
                 display_next_question();
