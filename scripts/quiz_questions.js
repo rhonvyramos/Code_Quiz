@@ -100,12 +100,32 @@ let q_objects = {
 };
 
 let q_increments = {
-    "question":"(Q11) To correctly apply a value increment, what is the perator used?",
+    "question":"(Q11) To correctly apply a value increment, what is the operator used?",
     "answers":[
         {"x += value":1},
         {"x plus value":0},
         {"x +++ value":0},
         {"x value":0}
+    ]
+};
+
+let q_filenames = {
+    "question":"(Q12) What is the file extension that designates an HTML file?",
+    "answers":[
+        {".html":1},
+        {".HL":0},
+        {".js":0},
+        {".hypertext":0}
+    ]
+};
+
+let q_innerHTML = {
+    "question":"(Q12) We use _____ to directly place text into an HTML element through Javascript.",
+    "answers":[
+        {".innerHTML":1},
+        {".inner":0},
+        {".htmlTEXT":0},
+        {".textHere":0}
     ]
 };
 
@@ -121,7 +141,9 @@ var list_questions_available = [
     q_jqueryselector,
     q_cssstyling,
     q_objects,
-    q_increments
+    q_increments,
+    q_filenames,
+    q_innerHTML
 ];
 
 // exports questions array 
