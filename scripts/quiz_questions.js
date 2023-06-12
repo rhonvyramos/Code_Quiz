@@ -99,6 +99,16 @@ let q_objects = {
     ]
 };
 
+let q_increments = {
+    "question":"(Q11) To correctly apply a value increment, what is the perator used?",
+    "answers":[
+        {"x += value":1},
+        {"x plus value":0},
+        {"x +++ value":0},
+        {"x value":0}
+    ]
+};
+
 // variable to hold all available question objects in array
 var list_questions_available = [
     q_datatypes, 
@@ -110,7 +120,8 @@ var list_questions_available = [
     q_varscope,
     q_jqueryselector,
     q_cssstyling,
-    q_objects
+    q_objects,
+    q_increments
 ];
 
 // exports questions array 
